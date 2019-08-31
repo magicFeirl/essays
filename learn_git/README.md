@@ -55,7 +55,7 @@
 	
 	可以使用git commit -m 将提交信息与命令放在同一行
 	
-# 跳过使用暂存区域（git commi -a）
+# 跳过使用暂存区域（git commit -a）
 	命令git commit -a可以自动将所有已跟踪过的文件暂存起来一并提交，从而跳过git add步骤
 	
 # 移除文件（git rm）
