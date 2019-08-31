@@ -62,6 +62,8 @@
 	要从git中移除文件，就必须把文件从暂存区中移除
 	使用git rm命令能完成此项工作，并将工作区目录中指定的文件连带移除
 	
+# git rm -r --cached <file> 取消对文件的跟踪
+	
 # 移动文件（git mv）
 	使用git mv指令，格式git mv file_from file_to
 	
