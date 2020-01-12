@@ -1,81 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "bst.h"
+//使用该BST的前提假设：没有重复数据
 
-typedef struct node {
-    int val;
-    struct node* left;
-    struct node* right;
-}Node,*PNode;
-
-typedef struct tree {
-    PNode root;
-}Tree,*PTree;
-
-PNode createNode(int val){
-    PNode node = (PNode)malloc(sizeof(Node));
-    node->left = node->right = NULL;
-    node->val = val;
-
-    return node;
-}
-
-void insert(PTree tree,int data){
-    PNode node = createNode(data);
-
-    if(tree->root == NULL){
-        tree->root = node;
-    }else{
-        PNode temp = tree->root;
-
-        while(temp != NULL){
-            if(data > temp->val){
-                if(temp->right == NULL){
-                    temp->right = node;
-                    break;
-                }else{
-                    temp = temp->right;
-                }
-            }else if(data < temp->val){
-                if(temp->left == NULL){
-                    temp->left = node;
-                    break;
-                }else{
-                    temp = temp->left;
-                }
-            }
-        }
-    }
-}
-
-void preorder(PNode node){
-    if(node != NULL){
-        printf("%d ",node->val);
-
-        preorder(node->left);
-        preorder(node->right);
-    }
-}
-
-PTree createTree(){
-    PTree tree = (PTree)malloc(sizeof(Tree));
-    tree->root = NULL;
-
-    return tree;
+void prtNodeVal(PNode node){
+    printf("%d ", node->data);
 }
 
 int main()
 {
-    int arr[] = {1,5,6,8,10,3,2},i,
-    size = sizeof(arr)/sizeof(arr[0]);
+    PNode root = createNode(5);
+    PTree tree = createTree(root);
+    int arr[] = {1, 2, 3, 4, -1, 1};
+    int size = sizeof(arr)/sizeof(arr[0]), i;
 
-    PTree bst = createTree();
-
-    for(i=0;i<size;i++){
-        insert(bst,arr[i]);
+    for(i=0;i<size;i++) {
+        insert(tree, arr[i]);
     }
 
-    preorder(bst->root); //1 5 3 2 6 8 10
-    printf("\n");
+    //removeNode(findNode(tree->root, findNode(tree->root,3)));
+    //preorder(tree->root, prtNodeVal);
+    //printf("\n");
+    inorder(tree->root, prtNodeVal);
 
     return 0;
 }
